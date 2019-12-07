@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search form</title>
+</head>
+<body>
+    <form action="{{ url_for('search_form') }}" method="post">
+        {{ form.source.label }}: {{ form.source(size=20) }}
+        {{ form.destination.label }}: {{ form.destination(size=20) }}
+        {{ form.departure_date.label }}: {{ form.departure_date }}
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
