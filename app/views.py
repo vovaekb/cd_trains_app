@@ -1,11 +1,13 @@
-from flask import request, jsonify, make_response, render_template
+import datetime
+import json
+
+from flask import request, render_template
+
 from app import app
+from app.carrier import Carrier
 from app.forms import SearchForm
 from data.core import Core
 from data.db_adapter import DBAdapter
-import datetime
-import simplejson as json
-from app.carrier import Carrier
 
 
 @app.route('/')
@@ -37,7 +39,8 @@ def search_form():
 
         # Using Postgresql
         carrier_util = Carrier()
-        journeys = carrier_util.get_journeys(request.form.get('source'), request.form.get('destination'), departure_date)
+        journeys = carrier_util.get_journeys(request.form.get('source'), request.form.get('destination'),
+                                             departure_date)
 
         db_connector = DBAdapter()
         for journey in journeys:

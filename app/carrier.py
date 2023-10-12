@@ -1,6 +1,7 @@
-from requests_html import HTMLSession
-import simplejson as json
+import json
 import re
+
+from requests_html2 import HTMLSession
 
 
 class Carrier:
